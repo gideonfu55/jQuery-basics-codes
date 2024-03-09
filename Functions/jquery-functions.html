@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Functions</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#divID").html("Hello World! No lah, done with hello.");
+      });
+
+      // Used to add a class to an element.
+      function addClass(){
+        $('p').addClass("redClass");
+      }
+
+      // Used to toggle on/off for adding & removing classes to elements (preferred approach):
+      function toggleClass() {
+        $('p').toggleClass("greenClass");
+      }
+
+      // For getting size of a list (note that .size is deprecated as of JQuery v1.8 and >):
+      function getSize() {
+        alert("the size of li is: " + $("li").length);
+      }
+
+      // Test an element to see if it matches a given condition. It returns true or false.
+      function checkGender() {
+        if ($("#chkMale").is(":checked")) {
+          alert("Male is selected.")
+        } else if ($("#chkFemale").is(":checked")) {
+          alert("Female is selected.");
+        } else {
+          alert("No option is selected.");
+        }
+      }
+
+    </script>
+
+    <style>
+      .redClass {
+        color: red;
+        font-style: italic;
+      }
+
+      .greenClass {
+        color: green;
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="divID">
+      <h5>Message 2</h5>
+    </div>
+
+    <p>I am going to learn JQuery in 8 hours.</p>
+    <p>I wanna be a Software Craftsman.</p>
+
+    <ul>
+      <li>Home</li>
+      <li>Products</li>
+      <li>About Us</li>
+    </ul>
+
+    <button onclick="addClass()" style="width: 150px;">Click to add class.</button><br><br>
+    <button onclick="toggleClass()" style="width: 150px;">Click to toggle class.</button><br><br>
+    <button onclick="getSize()" style="width: 150px;">Click to get size of list.</button><br><br>
+
+    <input type="radio" id="chkMale" name="sex" value="male">Male
+    <input type="radio" id="chkFemale" name="sex" value="female">Female<br><br>
+    <button id"chkGender" onclick="checkGender()" style="cursor: pointer; color: red;">Click here to check selected option.</button>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery AJAX - Handling Ajax Events</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- <script src="post.js"></script> -->
+    <script type="text/javascript">
+
+      // Handling the success from the server with JQuery:
+      // This uses a callback function to retrieve the error/success message when the query fails
+      function ajaxFun() {
+        $.ajax({
+          type: "POST",
+          // using a wrong file:
+          url: "response.php",
+          data: {data:1},
+          success: callback,
+          error: err
+        });
+      };
+
+      function callback(data) {
+        $("#results").text(data); // show data in div 
+      }
+
+      function err(xhr, message, e) {
+        $("#results").text(message);
+      }
+
+    </script>
+  </head>
+
+  <body>
+
+    <h4 style="font-weight: normal;">Handling Ajax Events</h4>
+
+    <input type="button" value="Run Ajax Call" onclick="ajaxFun()">
+
+    <h3>Click the button, Ajax Response:</h3>
+    <h3 style="font-weight: bold; color: red;">
+      <div id="results">
+      </div>
+    </h3>
+
+  </body>
+</html>

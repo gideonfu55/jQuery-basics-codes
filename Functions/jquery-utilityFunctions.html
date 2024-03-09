@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Utility Functions</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#divID").html("Hello World! No lah, done with hello.");
+      });
+
+      // Using the .each method to repeat function executions:
+      function loopWithEach() {
+
+        var liCount = 0;
+
+        $("ul li").each(function() {
+          $(this).css("color", "red");
+          alert("Red color added to li " + ++liCount);
+        });
+      }
+
+      // Create an array with JQuery:
+      function makeArrayReverse() {
+        var obj = $("li");
+        var myArray = $.makeArray(obj);
+
+        myArray.reverse();
+        $("ul").html(myArray);
+      }
+
+      // Check array position and how it can be applied:
+      // - there's definitely a better approach for this, this is just an example.
+      function checkListAsArray() {
+
+        var obj = $('li');
+
+        $("ul li").each(function() {
+
+          var listArray = $.makeArray(obj).map(item => item.innerHTML);
+          var index = $.inArray("John", listArray)
+
+          if (index > -1) {
+            $("ul li").eq(index).html("Andy");
+          }
+        })
+      }
+
+      // Create a new array by filtering an existing array (like array.filter in JS)
+      function arrayFilter() {
+
+        var obj = $('li');
+
+        var oldListArray = $.makeArray(obj).map(item => item.innerHTML);
+        listArray = $.grep(oldListArray, function(n, i) {
+          return (n != 'John' && i == 5);
+        })
+
+        var newListHTML = "";
+        listArray.forEach(element => {
+          newListHTML += "<li>" + element + "</li>";
+        });
+
+        console.log(newListHTML);
+
+        // Replacing contents of the existing ul with the new list HTML
+        $("#ul2").html(newListHTML);
+      }
+
+      // Removing duplicate values in an array.
+      // Note: this only does so for the second repeated value. If the value is repeated again in the list, it will be considered a new instance. e.g. [1, 1, 1, 2, 2, 1, 1] will be made [1, 2, 1] after the method is used.
+      function removeDuplicates() {
+
+        var obj = $("#ul2 > li");
+
+        var currentList = $.makeArray(obj).map(item => item.innerHTML);
+        var noDuplicateList = $.unique(currentList);
+
+        console.log(noDuplicateList);
+
+        var newListHTML = "";
+        noDuplicateList.forEach(element => {
+          newListHTML += "<li>" + element + "</li>";
+        });
+
+        // Replacing contents of the existing ul with the new list HTML
+        $("#ul2").html(newListHTML);
+
+      }
+      
+    </script>
+
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+    <div id="divID">
+      <h5>Message 1</h5>
+    </div>
+
+    <ul>
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+    </ul>
+
+    <ul id="ul2">
+      <li>John</li>
+      <li>John</li>
+      <li>Mary</li>
+      <li>Mary</li>
+      <li>Bruce</li>
+      <li>Bruce</li>
+      <li>Bruce</li>
+      <li>John</li>
+      <li>John</li>
+    </ul>
+
+    <button onclick="loopWithEach()" style="width: 150px; color:red">Click me</button><br><br>
+    <button onclick="makeArrayReverse()" style="width: 150px; color:green">Make array and reverse</button><br><br>
+    <button onclick="checkListAsArray()" style="width: 150px; color:blue">Check list for John and change</button><br><br>
+    <button onclick="arrayFilter()" style="width: 150px; color:rgb(65, 217, 225)">Filter list</button><br><br>
+    <button onclick="removeDuplicates()" style="width: 150px; color:rgb(234, 176, 40)">Remove duplicates from list</button><br><br>
+
+  </body>
+</html>

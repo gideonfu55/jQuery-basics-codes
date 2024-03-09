@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Selecting Elements</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#divID").html("Hello World! No lah, done with hello.");
+      });
+
+      // $(document).ready() is used to specify a function to execute after loading a web page. The event occurs after a web page is loaded.
+      // actually function() does the same thing 😓
+      // $(document).ready(function() {
+      //   alert("ready function called after page load.");
+      // })
+
+      // This accesses all elements (top level and sublevel children) for the specified tag name.
+      function getAllChild() {
+        alert($("p span").length);
+      }
+
+      // This accesses only the top level child elements for the specified tag, but not the sub level child elements.
+      function getTopChild() {
+        alert($("p > span").length);
+      }
+
+      // This access the element that contains a specified text.
+      function checkContains() {
+        alert($("span:nth-child(1):contains('sub')").html());
+      }
+
+      // This access a tag with a specified attribute value.
+      function getHtmlByTitle() {
+        alert($("div[title='2nd']").html());
+      }
+
+      // Used to select an element with a specific index number:
+      function getElementByIndex(index) {
+
+        var element = $("div").eq(index);
+
+        alert(element.html());
+      }
+
+    </script>
+
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+    <div id="divID">
+      <h5>Message 1</h5>
+    </div>
+
+    <p style="font-weight: bold;">Example:</p>
+    <p>$(document).ready(function( ){ </p>
+      <p> ……
+      });
+    </p>
+
+    <p>
+      <span style="float: left; width: 100%; padding: 5px;">This is top level child </span>
+      <span style="float: left; width: 100%; padding: 5px;">This is top level child </span>
+      <span style="float: left; width: 100%; padding: 5px;">This is top level child
+        <span style="float: left; width: 100%; padding: 5px;"> > This is sub level child </span>
+      </span>
+    </p>
+
+    <div title="first" style="float: left; width: 100%">
+      This is first div
+    </div>
+    <div title="2nd" style="float: left; width: 100%; margin-bottom: 10px;">
+      This is 2nd div
+    </div>
+
+    <button onclick="getAllChild()" style="width: 250px;">Click to get length of p span.</button><br><br>
+    <button onclick="getTopChild()" style="width: 250px;">Click to get length of p>span.</button><br><br>
+    <button onclick="checkContains()" style="width: 250px;">Click to check content: sub.</button><br><br>
+    <button onclick="getHtmlByTitle()" style="width: 250px;">Click to get title attribute by value.</button><br><br>
+    <button onclick="getElementByIndex(2)" style="width: 250px;">Click to get element by index 2.</button><br><br>
+
+  </body>
+</html>

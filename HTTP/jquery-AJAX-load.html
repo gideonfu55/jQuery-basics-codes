@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery AJAX - Loading Files</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#divID").html("Welcome to learning JQuery AJAX!");
+      });
+
+      // Use $("") to place an element for DOM manipulation:
+      function changeColor() {
+        $("#divTestChange").css("background-color", "red");
+      }
+
+      // Loading a file with AJAX:
+      $(function() {
+        $("#div2").load("myFile.txt");
+      });
+
+    </script>
+  </head>
+
+  <body>
+
+    <div id="divID">
+      <h5>Message 2</h5>
+    </div>
+
+    <div id="div2">
+    </div>
+
+    <h4 style="font-weight: normal;">AJAX stands for "Asynchronous JavaScript and XML. It is a technique for creating better, faster, and more interactive web scripts with XML, HTML CSS, PHP, ASP and JavaScript by the server.<br><br>
+    It can be used to update parts of a web page, without reloading the whole page. This means you can communicate with the server to renew the information on a page without refreshing it.
+    </h4>
+
+    <div id="divTestChange" onclick="changeColor()" style="cursor: pointer; width: 300px; height: 20px; background-color: green;">
+      <h5>Click here to change background color.</h5>
+    </div>
+
+  </body>
+</html>

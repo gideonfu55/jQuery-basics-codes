@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Hello World</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // $("div").html("<h5>Hello World Part 2!</h5>"); // note that this will change all divs, if placed last it will overwrite the next line
+        $("#divID").html("Hello World !");
+        // $("div").text("<h5>Hello World Part 2!</h5>"); // displays the whole text, not taking into account html tags.
+
+        // alert("Test jQuery Path");
+      });
+
+      // Use $("") to place an element for DOM manipulation:
+      function changeColor() {
+        $("#divTestChange").css("background-color", "red");
+      }
+      function changeColorForAll() {
+        $("div").css("background-color", "red");
+      }
+      function changeColorClass() {
+        $(".divChangeColorClass").css("background-color", "pink");
+      }
+      function setCSSChild() {
+        $("p:nth-child(1)").css("font-style", "italic");
+        $("p:nth-child(4)").css("font-style", "italic");
+      }
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <h5>Message 1</h5>
+    </div>
+
+    <div id="divID">
+      <h5>Message 2</h5>
+    </div>
+
+    <div id="divTestChange" onclick="changeColor()" style="cursor: pointer; width: 300px; height: 20px; background-color: green;">
+      <h5>Click here to change background color.</h5>
+    </div>
+
+    <div onclick="changeColorForAll()" style="cursor: pointer; width: 150px; height: 50px; background-color: greenyellow;">
+      <h5>Click here to change color for all.</h5>
+    </div>
+
+    <div class="divChangeColorClass" onclick="changeColorClass()" style="cursor: pointer; width: 150px; height: 50px; background-color: blue;">
+      <h5>Click here to change color for me and the guy below me.</h5>
+    </div>
+
+    <div class="divChangeColorClass" style="border: 1px; width: 150px; height: 50px">
+      <h5>Waiting to be changed by the guy above.</h5>
+    </div>
+
+    <div class="divChangeColorClass" style="border: 1px; width: 150px; height: 50px">
+      <h5>Waiting to be changed by the guy above.</h5>
+    </div>
+    
+    <h1>Selecting the first and last tag</h1>
+    <div>
+      <p>I love jQuery 1 time</p>
+      <p>I love jQuery 2 time</p>
+      <p>I love jQuery 3 time</p>
+      <p>I love jQuery 4 time</p>
+    </div>
+
+    <input type="button" value="Click Me" onclick="setCSSChild()"> </input>
+  </body>
+</html>

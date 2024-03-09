@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Events Binding</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#divID").html("Hello World! No lah, done with hello.");
+      });
+
+      // Bind event function: represents the action when an event happens in browser (e.g. click, key up, mouse over)
+      // Note that this is just to show a bind event function - it is easier to use onClick within the button in this case. Technically, this should be used for more complex bindings.
+      $(document).ready(function() {
+        $("#btn").bind("click", function() {
+          alert("User clicked on button.");
+        })
+      })
+
+      // One time bind event:
+      $(document).ready(function() {
+        $("#btnBindOnce").one("click", function() {
+          alert("This will be displayed only once.");
+        })
+      })
+
+      // Using event.pageX and event.pageY for getting mouse pointer position:
+      $(document).ready(function () {
+        $(document).mousemove(function (event) {
+
+          var x = event.pageX; 
+          var y = event.pageY;
+
+          $("span").text("pageX: " + x + ", pageY: " + y);
+        });
+      });
+  
+    </script>
+
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+    <div id="divID">
+      <h5>Message 1</h5>
+    </div>
+
+    <p>This is fun! The position of mouse pointer is at: <span></span></p>
+
+    <br>
+    <button id="btn" style="width: 150px; color:red">Click me</button><br><br>
+    <button id="btnBindOnce" style="width: 150px; color:red">Bound once only</button><br><br>
+
+  </body>
+</html>

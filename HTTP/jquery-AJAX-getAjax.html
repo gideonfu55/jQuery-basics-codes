@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery AJAX - Get Response with .Ajax</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- <script src="post.js"></script> -->
+    <script type="text/javascript">
+      // Posting data to the server with JQuery:
+      $(function() {
+        $.ajax({
+          type: "GET",
+          // load getFile.php:
+          url: "getFile.php",
+          data: {data: 100},
+          success: function(data) {
+            $("div").html(data); // show data in div
+          }
+        });
+      });
+
+    </script>
+  </head>
+
+  <body>
+
+    <h4 style="font-weight: normal;">Checking a GET with JQuery's .ajax</h4>
+
+    <h3>Response:</h3>
+    <div>
+    </div>
+
+  </body>
+</html>
